@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public int health;
     public float Speed;
     public float jumpSpeed;
     public int jumpMaxNum;
     private Rigidbody2D myRigidbody2D;
     private BoxCollider2D myFeet;
     private Animator myAnim;
-
     private int jumpNum;
     private bool isGround;
     // Start is called before the first frame update

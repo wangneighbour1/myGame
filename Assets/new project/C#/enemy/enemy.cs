@@ -9,11 +9,13 @@ public abstract class enemy : MonoBehaviour
     private Color originColor;
     public int health;
     public int mydamage;
+    private playerHealth playerHealth;
 
     public GameObject bloodEffect;
     // Start is called before the first frame update
     protected void Start()
     {
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<playerHealth>();
         sr = GetComponent<SpriteRenderer>();
         originColor = sr.color;
     }
@@ -25,9 +27,7 @@ public abstract class enemy : MonoBehaviour
 
     public void TakeDamage(int damage){
         health -= damage;
-        Debug.Log(health);
         FlashColor(flashTime);
-        GameObject.Find("CamerFollow").GetComponent<CamerFollow>().Shake();
         Instantiate(bloodEffect,transform.position,Quaternion.identity);
         if(health<=0){
             Destroy(gameObject);
@@ -44,5 +44,11 @@ public abstract class enemy : MonoBehaviour
         sr.color = originColor;
     }
 
+    void OnTriggerEnter2D(Collider2D other){
+        if(other.gameObject.CompareTag("Player") && other.GetType().ToString() == "UnityEngine.CapsuleCollider2D"){
+            if(playerHealth != null)
+            playerHealth.damagePlayer(mydamage);
+        }
+    }
 
 }
