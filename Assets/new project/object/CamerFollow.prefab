@@ -69,7 +69,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3.4156337
+  orthographic size: 4.8464227
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -162,5 +162,5 @@ MonoBehaviour:
   target: {fileID: 0}
   smoothing: 0.1
   Anim: {fileID: 6354456527821694381}
-  minPosition: {x: -3.3, y: 1.6}
-  maxPosition: {x: 2.1, y: 4.3}
+  minPosition: {x: -20.5, y: 3.11}
+  maxPosition: {x: 125.19, y: 6.42}

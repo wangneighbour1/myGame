@@ -10,8 +10,8 @@ public abstract class enemy : MonoBehaviour
     public int health;
     public int mydamage;
     private playerHealth playerHealth;
-
     public GameObject bloodEffect;
+    public GameObject DropGem;
     // Start is called before the first frame update
     protected void Start()
     {
@@ -30,6 +30,7 @@ public abstract class enemy : MonoBehaviour
         FlashColor(flashTime);
         Instantiate(bloodEffect,transform.position,Quaternion.identity);
         if(health<=0){
+            Instantiate(DropGem,transform.position,Quaternion.identity);
             Destroy(gameObject);
         }
     }
@@ -44,7 +45,7 @@ public abstract class enemy : MonoBehaviour
         sr.color = originColor;
     }
 
-    void OnTriggerEnter2D(Collider2D other){
+    void OnTriggerStay2D(Collider2D other){
         if(other.gameObject.CompareTag("Player") && other.GetType().ToString() == "UnityEngine.CapsuleCollider2D"){
             if(playerHealth != null)
             playerHealth.damagePlayer(mydamage);

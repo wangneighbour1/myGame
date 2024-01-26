@@ -7,6 +7,8 @@ TagManager:
   - enemy
   - Ground
   - Background
+  - Spike
+  - item
   layers:
   - Default
   - TransparentFX
@@ -14,12 +16,12 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - item
   - Background
   - Ground
   - Player
   - Enemy
-  - 
+  - Spike
   - 
   - 
   - 
@@ -52,6 +54,9 @@ TagManager:
     locked: 0
   - name: Enemy
     uniqueID: 1554658093
+    locked: 0
+  - name: item
+    uniqueID: 797712379
     locked: 0
   - name: Player
     uniqueID: 2539300641

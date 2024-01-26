@@ -19,7 +19,9 @@ public class attack1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         Attack1();
+        if(!GameController.isGameover){
+            Attack1();
+        }
     }
 
     void Attack1(){

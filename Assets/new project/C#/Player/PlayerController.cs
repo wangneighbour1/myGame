@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float jumpSpeed;
     public int jumpMaxNum;
     private Rigidbody2D myRigidbody2D;
+    private CapsuleCollider2D body;
     private BoxCollider2D myFeet;
     private Animator myAnim;
     private int jumpNum;
@@ -16,6 +18,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         jumpNum = jumpMaxNum;
+        body = GetComponent<CapsuleCollider2D>();
         myRigidbody2D = GetComponent<Rigidbody2D>();
         myAnim = GetComponent<Animator>();
         myFeet = GetComponent<BoxCollider2D>();
@@ -24,24 +27,19 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Flip();
-        Run();
-        Jump();
-        switchAnimation ();
+        if(!GameController.isGameover)
+        {
+            Flip();
+            Run();
+            Jump();
+        }
+        switchAnimation();
         CheckGround();
     }
 
     void CheckGround(){
         isGround = myFeet.IsTouchingLayers(LayerMask.GetMask("Ground"));
     }
-
-    // void attack1(){
-    //     attack1cd -= Time.deltaTime;
-    //     if(Input.GetMouseButtonDown(0) && attack1cd<=0){
-    //         myAnim.SetTrigger("attack1");
-    //         attack1cd = 0.4f;
-    //     }
-    // }
 
     void Run(){
         float moveDir = Input.GetAxis("Horizontal");
@@ -63,7 +61,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void Jump(){
-        if(Input.GetKeyDown("space")){
+        if(Input.GetKeyDown("space")&&!Input.GetKey("s")){
             if(isGround){
                 jumpNum = jumpMaxNum;
             }

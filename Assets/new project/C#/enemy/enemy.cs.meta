@@ -5,6 +5,7 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - bloodEffect: {fileID: 6825635023186180393, guid: 9b9847223a271f14f8ccc23c58f077b4, type: 3}
+  - DropGem: {fileID: 1660079227826084416, guid: 7c2e60093d34f8245ac1ca56553a3661, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
